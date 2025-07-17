@@ -7,39 +7,42 @@ export const themes = {
               bubbleUser: 'bg-blue-500 text-white',
               bubbleBot: 'bg-blue-200 text-black',
               sendButton: 'bg-blue-500 text-white',
-
-              sendButtonDisabled: 'bg-gray-400 text-white',
+              sendButtonDisabled: 'bg-gray-400 text-white cursor-not-allowed',
               inputBorder: 'focus:border-blue-400',
-              dropdown: 'bg-white text-black '
+              dropdown: 'bg-white text-black ',
+              Chatbotstyle: 'text-white font-semibold'
 
 
        },
        dark: {
               background: 'bg-black',
-              text: "text-white",
-              bubbleUser: 'bg-white-500 text-black',
-              bubbleBot: 'bg-white-500 text-black',
-              sendButton: 'bg-white-800 text-black',
-              sendButtonDisabled: 'bg-gray-800 text-gray-500',
-
+              Header: 'bg-gray-600',
+              text: "text-black",
+              bubbleUser: 'bg-white text-black',
+              bubbleBot: 'bg-gray-500 text-white',
+              sendButton: 'bg-white text-black',
+              sendButtonDisabled: 'bg-gray-400 text-gray-600 cursor-not-allowed',
+              Chatbotstyle: 'text-white font-semibold'
 
        },
        Turtle: {
-              background: 'bg-green',
-              text: "text-white",
+              background: 'bg-green-800',
+              Header: 'bg-green-300 ',
               bubbleUser: 'bg-green-300 text-black',
-              bubbleBot: 'bg-green-300 text-black',
+              bubbleBot: 'bg-green-200 text-black',
               sendButton: 'bg-green-300 text-black',
-              sendButtonDisabled: 'bg-gray-800 text-gray-500',
+              sendButtonDisabled: 'bg-green-400 text-gray-300 cursor-not-allowed',
+              Chatbotstyle: 'text-black font-semibold'
 
        },
        Reddish: {
-              background: 'bg-pink',
-              text: "text-black",
+              background: 'bg-pink-700',
+              Header: 'bg-pink-300 ',
               bubbleUser: 'bg-pink-300 text-black',
-              bubbleBot: 'bg-pink-300 text-black',
+              bubbleBot: 'bg-pink-200 text-black',
               sendButton: 'bg-pink-300 text-white',
-              sendButtonDisabled: 'bg-gray-800 text-gray-500',
+              sendButtonDisabled: 'bg-pink-400 text-white cursor-not-allowed',
+              Chatbotstyle: 'text-black font-semibold'
 
        },
 

@@ -26,6 +26,7 @@ dist-ssr
 # Virtual env
 venv/
 .venv/
+.env*
 
 # Ignore all node_modules folders recursively
 **/node_modules

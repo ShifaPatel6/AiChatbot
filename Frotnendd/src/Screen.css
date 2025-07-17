@@ -22,6 +22,7 @@
        width: 3px;
 }
 
+
 .custom-scroll::-webkit-scrollbar-thumb {
        background-color: amber;
        /* amber-700 */

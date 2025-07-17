@@ -10,22 +10,25 @@ const ChatScreen = () => {
   const [input, setInput] = useState(" ");
   const [messages, setMessages] = useState([]);
   const [isListening, setIsListening] = useState(false);
-  const [istyping, setIsTyping] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [currentTheme, setcurrentTheme] = useState("light");
 
   const messagesEndRef = useRef(null);
   const theme = themes[currentTheme];
-  console.log(theme, "active theme");
-  console.log("SendButton class:", theme.sendButton);
+
+  useEffect(() => {}, [theme]); // ✅ Only logs when theme changes
 
   const sendMessage = async () => {
     const userMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
-    setIsTyping(true);
+    setIsGenerating(true);
 
-    // Add empty assistant message for typing effect
-    const tempAssistantMessage = { role: "assistant", content: "Typing..." };
+    // Add empty assistant message for Generating effect
+    const tempAssistantMessage = {
+      role: "assistant",
+      content: "Generating...",
+    };
     setMessages((prev) => [...prev, tempAssistantMessage]);
 
     try {
@@ -42,7 +45,7 @@ const ChatScreen = () => {
       }
       const botReply = data.reply;
 
-      // Replace the last "Typing..." message with real content
+      // Replace the last "Generating..." message with real content
       setMessages((prev) => {
         const updated = [...prev];
         updated[updated.length - 1] = { role: "assistant", content: botReply };
@@ -91,7 +94,7 @@ const ChatScreen = () => {
 
   return (
     <>
-      <div className="flex justify-center  ">
+      <div className="flex justify-center ">
         <div
           className={`${theme.background} ${theme.text} w-lg h-dvh rounded-[2vw] flex flex-col items-center  gap-6 `}
         >
@@ -99,14 +102,18 @@ const ChatScreen = () => {
             className={`flex items-center justify-between px-6 ${theme.Header} h-20 text-xl w-full text-white`}
           >
             {/* Title centered in available space */}
-            <h5 className="absolute left-1/2 transform -translate-x-1/2">
-              Chat Bot
+            <h5
+              className={`absolute left-1/2 transform -translate-x-1/2 ${theme.Chatbotstyle}`}
+            >
+              AI Chat Bot
             </h5>
 
             {/* Theme selector aligned right */}
             <div>
               <select
                 className={` text-black  rounded dropdwon focus:outline-none px-4`}
+                value={currentTheme}
+                onChange={(e) => setcurrentTheme(e.target.value)}
               >
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
@@ -131,7 +138,7 @@ const ChatScreen = () => {
            ? `${theme.bubbleUser}`
            : msg.content === "Error Generating"
            ? "bg-red-100 text-red-700 border border-red-400"
-           : msg.content === "Typing..."
+           : msg.content === "Generating..."
            ? `${theme.bubbleUser} animate-pulse`
            : `${theme.bubbleBot}`
        }
@@ -149,12 +156,12 @@ const ChatScreen = () => {
           <div className="flex  space-x-4 mt-auto mb-7 items-center">
             <div>
               <div
-                className={`cursor-pointer rounded-full w-8 h-8  flex justify-center items-center  ${
+                className={`cursor-pointer rounded-full w-10 h-10  flex justify-center items-center  ${
                   isListening ? "bg-black text-white" : "bg-gray-500 "
                 }`}
               >
                 <SlMicrophone
-                  className="w-6 h-6 text-white"
+                  className="w-7 h-7 text-white"
                   onClick={handleVoiceRec}
                 />
               </div>
@@ -177,7 +184,7 @@ const ChatScreen = () => {
               disabled={!input.trim("")}
               onClick={() => sendMessage()}
             >
-              <LuSendHorizontal className="w-6 h-6" />
+              <LuSendHorizontal className="w-7 h-7" />
             </div>
           </div>
         </div>
